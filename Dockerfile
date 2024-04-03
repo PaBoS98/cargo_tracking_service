@@ -11,7 +11,5 @@ WORKDIR /app/cargo_tracking_service
 
 RUN mvn clean install package
 
-WORKDIR /app/cargo_tracking_service
-
-COPY /target/*.jar app.jar
+COPY /app/cargo_tracking_service/target/*.jar app.jar
 ENTRYPOINT ["java","-jar","app.jar"]
