@@ -1,15 +1,11 @@
-FROM openjdk:17-jdk-slim
-FROM maven:3.9.5
-
+FROM maven:3.9.5 AS build
 WORKDIR /app
-
-RUN apt-get update \
-    && apt-get install -y git \
-    && git clone https://github.com/PaBoS98/cargo_tracking_service.git
-
+RUN apt-get update && apt-get install -y git
+RUN git clone https://github.com/PaBoS98/cargo_tracking_service.git
 WORKDIR /app/cargo_tracking_service
+RUN mvn clean install
 
-RUN mvn clean install package
-
-COPY /app/cargo_tracking_service/target/*.jar app.jar
+FROM openjdk:17-jdk-slim
+WORKDIR /app/cargo_tracking_service
+COPY --from=build /app/cargo_tracking_service/target/*.jar app.jar
 ENTRYPOINT ["java","-jar","app.jar"]
