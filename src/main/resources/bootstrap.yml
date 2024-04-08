@@ -2,4 +2,4 @@ spring:
   application.name: cargo-tracking-service
 
 logging:
-  path: C:\\Users\\p.bohomaz\\IdeaProjects\\cargo_tracking_service\\src\\main\\java\\com\\pavlob\\logs
+  path: /opt/logs/
