@@ -13,5 +13,7 @@ public interface CargoTrackingFacade {
 
     List<CargoDto> getAllCargo();
 
+    CargoDto getCargo(long cargoId);
+
     List<CargoDto> getAllWhereStatusNot(DeliveryStatusDto deliveryStatus);
 }

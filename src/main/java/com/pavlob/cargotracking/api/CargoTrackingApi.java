@@ -3,6 +3,7 @@ package com.pavlob.cargotracking.api;
 import com.pavlob.cargotracking.dto.CargoDto;
 import com.pavlob.cargotracking.dto.DeliveryStatusDto;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -14,6 +15,9 @@ public interface CargoTrackingApi {
 
     @GetMapping()
     List<CargoDto> getAllCargo();
+
+    @GetMapping("/{cargoId}")
+    CargoDto getCargo(@PathVariable("cargoId") final long cargoId);
 
     @GetMapping("/notInStatus")
     List<CargoDto> getAllCargoWhereStatusNot(@RequestParam("deliveryStatus") DeliveryStatusDto deliveryStatus);

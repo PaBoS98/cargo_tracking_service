@@ -13,5 +13,7 @@ public interface CargoTrackingService {
 
     List<CargoModel> getAllCargo();
 
+    CargoModel getCargo(long cargoId);
+
     List<CargoModel> getAllWhereStatusNot(DeliveryStatus deliveryStatus);
 }

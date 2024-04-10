@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Slf4j
@@ -36,6 +37,14 @@ public class CargoTrackingServiceImpl implements CargoTrackingService {
     @Transactional
     public List<CargoModel> getAllCargo() {
         return cargoTrackingRepository.findAll();
+    }
+
+    @Override
+    @Transactional
+    public CargoModel getCargo(final long cargoId) {
+        final Optional<CargoModel> cargoModel = cargoTrackingRepository.findById(cargoId);
+
+        return cargoModel.get();
     }
 
     @Override

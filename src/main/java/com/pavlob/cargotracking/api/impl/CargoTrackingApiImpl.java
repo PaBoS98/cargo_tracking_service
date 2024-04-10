@@ -21,6 +21,11 @@ public class CargoTrackingApiImpl implements CargoTrackingApi {
     }
 
     @Override
+    public CargoDto getCargo(final long cargoId) {
+        return cargoTrackingFacade.getCargo(cargoId);
+    }
+
+    @Override
     public List<CargoDto> getAllCargoWhereStatusNot(DeliveryStatusDto deliveryStatus) {
         return cargoTrackingFacade.getAllWhereStatusNot(deliveryStatus);
     }

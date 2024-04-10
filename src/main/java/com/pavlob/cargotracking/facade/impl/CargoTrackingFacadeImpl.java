@@ -43,6 +43,13 @@ public class CargoTrackingFacadeImpl implements CargoTrackingFacade {
     }
 
     @Override
+    public CargoDto getCargo(final long cargoId) {
+        final CargoModel cargoModel = cargoTrackingService.getCargo(cargoId);
+
+        return CargoDtoModelMapper.INSTANCE.cargoModelToCargoDto(cargoModel);
+    }
+
+    @Override
     public List<CargoDto> getAllWhereStatusNot(final DeliveryStatusDto deliveryStatus) {
         final List<CargoModel> cargoModels = cargoTrackingService.getAllWhereStatusNot(DeliveryStatus.valueOf(deliveryStatus.name()));
         return cargoModels.stream()
